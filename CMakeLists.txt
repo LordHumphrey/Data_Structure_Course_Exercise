@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.15)
+project(Data_Structure_Course_Exercise)
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Student_Achievement_Management_System Student_Achievement_Management_System/SAMS.cpp)
+add_executable(Parking_management Parking_management/parking_management.cpp)
+add_executable(Construction_of_binary_tree Construction_of_binary_tree/Construction_of_binary_tree.cpp)
+add_executable(Hash_file Hash_file/Hash_file.cpp)
+add_executable(Driving_route Driving_route/Driving_route.cpp)
