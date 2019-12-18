@@ -33,6 +33,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
+#include <regex>
 
 using namespace std;
 
@@ -44,27 +46,66 @@ typedef struct synonyms_node
 
 vector<pointer_to_synonyms_node> vector_pointer_to_synonyms(6, nullptr);
 
+pointer_to_synonyms_node list_pointer_to_synonyms_node[100];
+
 int get_hash_position(int data);
 
 void insert_to_hash_file();
 
 void write_vector_to_file(vector<pointer_to_synonyms_node> toBeWrite, const string &fileName);
 
+void read_link_list_from_file(const string &fileName);
+
 void write_vector_to_file(vector<pointer_to_synonyms_node> toBeWrite, const string &fileName)
 {
-    ofstream establish_index_file;
-    establish_index_file.open("D:\\" + fileName, ios_base::binary);
-//    for (auto i :toBeWrite)
-//    {
-//        establish_index_file << "0x" << i << ",";
-//    }
-    pointer_to_synonyms_node list_pointer_to_synonyms_node[toBeWrite.size()];
-    for (int i = 0; i < toBeWrite.size(); i++)
+    ofstream write_binary_file;
+    write_binary_file.open("D:\\" + fileName, ios_base::binary);
+    for (int i = 0; i < vector_pointer_to_synonyms.size(); i++)
     {
-        list_pointer_to_synonyms_node[i] = toBeWrite[i];
+        write_binary_file << i << endl;
     }
-    establish_index_file.write((const char *) list_pointer_to_synonyms_node, toBeWrite.size());
+    write_binary_file.close();
 }
 
+void write_link_list_to_file(vector<pointer_to_synonyms_node> toBeWrite, const string &fileName)
+{
+    ofstream write_binary_file;
+    write_binary_file.open("D:\\" + fileName, ios_base::binary);
+    pointer_to_synonyms_node temp;
+    for (auto i:toBeWrite)
+    {
+        if (i)
+        {
+            temp = i;
+            while (temp)
+            {
+                write_binary_file << temp->data << " ";
+                temp = temp->next;
+            }
+            write_binary_file << endl;
+        } else
+        {
+            write_binary_file << endl;
+        }
+    }
+    write_binary_file.close();
+}
+
+
+void welcome()
+{
+    cout << "\n";
+    cout << "                  ***Wasting time is robbing oneself.*** " << endl;
+    cout << "                    --------------------------------" << endl;
+    cout << "                    |                               |" << endl;
+    cout << "                    |        1.Insert data          |" << endl;
+    cout << "                    |        2.Find data            |" << endl;
+    cout << "                    |        3.Deltese data         |" << endl;
+    cout << "                    |        4.Load from File       |" << endl;
+    cout << "                    |        5.Print                |" << endl;
+    cout << "                    |        0.Exit                 |" << endl;
+    cout << "                    -------------------------------- " << endl;
+   
+}
 
 #endif //DATA_STRUCTURE_COURSE_EXERCISE_HASH_FILE_H

@@ -18,11 +18,11 @@
 ======`-.____`-.___\_____/___.-`____.-'======
                    `=---='
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            佛祖保佑       永无BUG
-            
+            浣涚淇濅綉       姘告棤BUG
+
             @Author: Tao
             @Time: 2019/12/10 15:13
-            @Project_NAME：Learn_Data_Structure
+            @Project_NAME锛歀earn_Data_Structure
             @FileName: get_user_input.cpp
             @IDE: CLion
 */
@@ -33,58 +33,24 @@
 #include <vector>
 
 using namespace std;
-vector<char> vector_middle_order;
-vector<char> vector_frame_drder;
-vector<char> vector_postamble_order;
-vector<char> vector_sequence_order;
+vector<int> vector_middle_order;
+vector<int> vector_pre_drder;
+vector<int> vector_postamble_order;
+vector<int> vector_sequence_order;
 
 void get_sequence_order(int length);
 
 void get_middle_order(int length);
 
-void get_frame_order(int length);
+void get_pre_order(int length);
 
 void get_postorder(int length);
 
-void get_user_input()
-{
-    welcome();
-
-    cout << "请输入操作:";
-    char to_do_what;
-    cin >> to_do_what;
-    system("cls");
-    int length;
-    cout << "请输入树的节点个数:";
-    cin >> length;
-    switch (to_do_what)
-    {
-        case '1':
-            get_sequence_order(length);
-            get_middle_order(length);
-            break;
-        case '2':
-            get_middle_order(length);
-            get_postorder(length);
-            break;
-        case '3':
-            get_frame_order(length);
-            get_middle_order(length);
-            break;
-        case '4':
-            cout << "Boom!你死了~" << endl;
-            break;
-        case '0':
-            return;
-        default:
-            break;
-    }
-}
 
 void get_sequence_order(int length)
 {
-    char data;
-    cout << "请输入层序遍历:";
+    int data;
+    cout << "Please input sequence:";
     for (int i = 0; i < length; i++)
     {
         cin >> data;
@@ -94,8 +60,8 @@ void get_sequence_order(int length)
 
 void get_middle_order(int length)
 {
-    char data;
-    cout << "请输入中序遍历:" << endl;
+    int data;
+    cout << "Please input middle order:";
     for (int i = 0; i < length; i++)
     {
         cin >> data;
@@ -103,21 +69,21 @@ void get_middle_order(int length)
     }
 }
 
-void get_frame_order(int length)
+void get_pre_order(int length)
 {
-    char data;
-    cout << "请输入前序遍历:" << endl;
+    int data;
+    cout << "Please input pre drder:";
     for (int i = 0; i < length; i++)
     {
         cin >> data;
-        vector_frame_drder.push_back(data);
+        vector_pre_drder.push_back(data);
     }
 }
 
 void get_postorder(int length)
 {
-    char data;
-    cout << "请输入后序遍历:" << endl;
+    int data;
+    cout << "Please input postorder:";
     for (int i = 0; i < length; i++)
     {
         cin >> data;

@@ -18,11 +18,11 @@
 ======`-.____`-.___\_____/___.-`____.-'======
                    `=---='
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            佛祖保佑       永无BUG
-            
+            浣涚淇濅綉       姘告棤BUG
+
             @Author: Tao
             @Time: 2019/12/10 14:04
-            @Project_NAME：Learn_Data_Structure
+            @Project_NAME锛歀earn_Data_Structure
             @FileName: Construction_of_binary_tree.cpp
             @IDE: CLion
 */
@@ -35,7 +35,7 @@
 using namespace std;
 typedef struct binary_tree_node
 {
-    char data;
+    int data;
     struct binary_tree_node *left_child, *right_child;
 
 } binary_tree_node, *pointer_to_binary_tree_node;
@@ -43,24 +43,22 @@ typedef struct binary_tree_node
 void welcome()
 {
     cout << "\n";
-    cout << "                     ***惟草木之零落兮，恐美人之迟暮*** " << endl;
-    cout << "                    ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁" << endl;
-    cout << "                    ▏                               |" << endl;
-    cout << "                    ▏        1.层序和中序              |" << endl;
-    cout << "                    ▏        2.后序和中序            |" << endl;
-    cout << "                    ▏        3.前序和中序            |" << endl;
-    cout << "                    ▏        4.一键爆炸                |" << endl;//变成课任意插入位置的
-    cout << "                    ▏        0. 退出                 |" << endl;
-    cout << "                    ▏                               |" << endl;
-    cout << "                    ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔" << endl;
+    cout << "                  ***Wasting time is robbing oneself.*** " << endl;
+    cout << "                    -----------------------------------------------" << endl;
+    cout << "                    |                                              |" << endl;
+    cout << "                    |        1.Sequence and Middle order           |" << endl;
+    cout << "                    |        2.Postorder and Middle order(todo)    |"
+         << endl;//todo: Postorder and Middle order
+    cout << "                    |        3.Pre and Middle order                |" << endl;
+    cout << "                    |        4.One-click Boom                      |" << endl;
+    cout << "                    |        0.Exit                                |" << endl;
+    cout << "                    ----------------------------------------------- " << endl;
 
 }
 
-void sequence_and_middle_order();
-
-void postorder_and_middleorder();
-
-void preamble_and_middle_order();
-
+pointer_to_binary_tree_node
+create_with_pre_and_middle_order(vector<int> pre_order, vector<int> middle_order, int pre_first,
+                                 int pre_last,
+                                 int in_first, int in_last)
 
 #endif //LEARN_DATA_STRUCTURE_CONSTRUCTION_OF_BINARY_TREE_H

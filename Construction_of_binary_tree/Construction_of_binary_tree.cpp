@@ -18,116 +18,106 @@
 ======`-.____`-.___\_____/___.-`____.-'======
                    `=---='
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            ∑◊Ê±£””       ”¿ŒﬁBUG
-            
+            ‰ΩõÁ•ñ‰øù‰Ωë       Ê∞∏Êó†BUG
+
             @Author: Tao
             @Time: 2019/12/10 14:01
-            @Project_NAME£∫Learn_Data_Structure
+            @Project_NAMEÔºöLearn_Data_Structure
             @FileName: Construction_of_binary_tree.cpp
             @IDE: CLion
 */
 #include "Construction_of_binary_tree.h"
-#include "get_user_input.h"
+#include "Get_user_input.h"
+#include "Traversal.h"
 
-char layer[50], in[50], pre[50];
+pointer_to_binary_tree_node my_binary_tree;
 
-int n, idx = 0;
-//pointer_to_binary_tree_node create_with_sequence_and_middle_order(const vector<char> &sequence_order, int left, int right)
-//{
-//
-//    if (left > right || sequence_order.empty())
-//    {
-//        return nullptr;
-//    }
-//    auto root = new binary_tree_node;
-//    root->left_child = nullptr;
-//    root->right_child = nullptr;
-//    root->data = sequence_order[0];
-//    int root_position;
-//    for (root_position = left; root_position <= right; root_position++)
-//    {
-//        if (vector_middle_order[root_position] == vector_sequence_order[0])
-//        {
-//            break;
-//        }
-//    }
-//    int left_tree = root_position - left;
-//    int right_tree = right - root_position;
-//    vector<char> left_tree_node, right_tree_node;
-//    vector<char>::iterator m;
-//    for (m = vector_sequence_order.begin(); m != vector_sequence_order.end(); m++)
-//    {
-//        int left_or_not = 0;
-//        for (int j = left; j < root_position; j++)
-//        {
-//            if (vector_middle_order[j] == *m)
-//            {
-//                left_tree_node.push_back(*m);
-//                left_or_not = 1;
-//                break;
-//            }
-//        }
-//        if (left_or_not == 0)
-//        {
-//            for (int j = root_position + 1; j <= right; j++)
-//            {
-//                if (vector_middle_order[j] == *m)
-//                {
-//                    right_tree_node.push_back(*m);
-//                    break;
-//                }
-//            }
-//        }
-//    }
-//    root->left_child = create_with_sequence_and_middle_order(left_tree_node, left, root_position - 1);
-//    root->right_child = create_with_sequence_and_middle_order(right_tree_node, root_position + 1, right);
-//    return root;
-//}
-
-pointer_to_binary_tree_node create_with_sequence_and_middle_order(int ll, int lr, int inl, int inr)
+pointer_to_binary_tree_node
+create_with_pre_and_middle_order(vector<int> pre_order, vector<int> middle_order, int pre_first,
+                                 int pre_last,
+                                 int in_first, int in_last)
 {
-    if (inl > inr)
-        return nullptr;
-    auto root = new binary_tree_node;
-    int i, j = 0;
-    bool f = false;
-    for (i = ll; i <= lr; i++)
+    int count = 0;
+    int left_length, right_lenth;
+    auto T = new binary_tree_node;
+    T->data = pre_order[pre_first];
+    T->left_child = nullptr;
+    T->right_child = nullptr;
+    while (middle_order[count] != pre_order[pre_first])
     {
-        f = false;
-        for (j = inl; j <= inr; j++)
-        {
-            if (layer[i] == in[j])
-            {
-                root->data = in[j];
-                root->left_child = nullptr;
-                root->right_child = nullptr;
-                f = true;
-                break;
-            }
-        }
-        if (f) break;
+        count++;
     }
-    if (!f) return nullptr;
-    if (j > inl) root->left_child = create_with_sequence_and_middle_order(0, n - 1, inl, j - 1);
-    if (j < inr) root->right_child = create_with_sequence_and_middle_order(0, n - 1, j + 1, inr);
-    return root;
+    left_length = count - in_first;
+    right_lenth = in_last - count;
+    if (left_length != 0)
+    {
+        T->left_child = create_with_pre_and_middle_order(pre_order, middle_order, pre_first + 1,
+                                                         pre_first + left_length,
+                                                         in_first, in_first + left_length - 1);
+    } else
+    {
+        T->left_child = nullptr;
+    }
+    if (right_lenth != 0)
+    {
+        T->right_child = create_with_pre_and_middle_order(pre_order, middle_order, pre_last - right_lenth + 1,
+                                                          pre_last,
+                                                          in_last - right_lenth + 1, in_last);
+    } else
+    {
+        T->right_child = nullptr;
+    }
+
+
+    return T;
 }
 
-void postOrder(pointer_to_binary_tree_node root)
+void generate_pre_oeder()
 {
-    if (root == nullptr) return;
-    postOrder(root->left_child);
-    postOrder(root->right_child);
-    cout << root->data << endl;
+
 }
 
+void get_user_input()
+{
+    welcome();
+
+    cout << "Please input:";
+    char to_do_what;
+    cin >> to_do_what;
+    system("cls");
+    int length;
+    cout << "Please input the number of binarytree node:";
+    cin >> length;
+    switch (to_do_what)
+    {
+        case '1':
+            get_sequence_order(length);
+            get_middle_order(length);
+            break;
+        case '2':
+            get_middle_order(length);
+            get_postorder(length);
+            break;
+        case '3':
+            get_pre_order(length);
+            get_middle_order(length);
+            my_binary_tree = create_with_pre_and_middle_order(vector_pre_drder,
+                                                              vector_middle_order, 0,
+                                                              length - 1, 0, length - 1);
+            break;
+        case '4':
+            cout << "Boom~" << endl;
+            break;
+        case '0':
+            return;
+        default:
+            break;
+    }
+}
 
 int main()
 {
-
     get_user_input();
-    pointer_to_binary_tree_node my_binary_tree;
-    pointer_to_binary_tree_node root = create_with_sequence_and_middle_order(0, vector_sequence_order.size(), 0,
-                                                                             vector_sequence_order.size());
-    postOrder(root);
+    cout << "The Post order is:";
+    post_order(my_binary_tree);
 }
