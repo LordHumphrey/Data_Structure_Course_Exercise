@@ -37,4 +37,14 @@ void post_order(pointer_to_binary_tree_node root)
     cout << root->data << " ";
 }
 
+void pre_order(pointer_to_binary_tree_node root)
+{
+    if (root)
+    {
+        cout << root->data << " ";
+        pre_order(root->left_child);
+        pre_order(root->right_child);
+    }
+}
+
 #endif //DATA_STRUCTURE_COURSE_EXERCISE_TRAVERSAL_H

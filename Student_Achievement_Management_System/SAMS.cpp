@@ -18,11 +18,11 @@
 ======`-.____`-.___\_____/___.-`____.-'======
                    `=---='
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            ·ğ×æ±£ÓÓ       ÓÀÎŞBUG
+            ä½›ç¥–ä¿ä½‘       æ°¸æ— BUG
 
             @Author: Tao
             @Time: 2019/12/9 13:57
-            @Project_NAME£ºLearn_Data_Structure
+            @Project_NAMEï¼šLearn_Data_Structure
             @FileName: SAMS.cpp
             @IDE: CLion
 */
@@ -32,25 +32,25 @@
 using namespace std;
 
 
-void get_data(pointer_to_Student &header_student) //»ñÈ¡´ıÌí¼ÓµÄĞÅÏ¢
+void get_data(pointer_to_Student &header_student) //è·å–å¾…æ·»åŠ çš„ä¿¡æ¯
 {
     header_student = new Student;
     int to_add_student_number;
-    cout << "ÇëÊäÈëÒªÔö¼ÓµÄÑ§ÉúÊı:";
+    cout << "è¯·è¾“å…¥è¦å¢åŠ çš„å­¦ç”Ÿæ•°:";
     cin >> to_add_student_number;
     pointer_to_Student new_node, p = header_student;
     for (int i = 0; i < to_add_student_number; i++)
     {
         new_node = new Student;
-        cout << "ÇëÊäÈëĞÕÃû:";
+        cout << "è¯·è¾“å…¥å§“å:";
         cin >> new_node->user_name;
-        cout << "ÇëÊäÈëÑ§ºÅ:";
+        cout << "è¯·è¾“å…¥å­¦å·:";
         cin >> new_node->user_id;
-        cout << "ÇëÊäÈëFox³É¼¨:";
+        cout << "è¯·è¾“å…¥Foxæˆç»©:";
         cin >> new_node->fox_score;
-        cout << "ÇëÊäÈëC³É¼¨:";
+        cout << "è¯·è¾“å…¥Cæˆç»©:";
         cin >> new_node->c_score;
-        cout << "ÇëÊäÈëÓ¢Óï³É¼¨:";
+        cout << "è¯·è¾“å…¥è‹±è¯­æˆç»©:";
         cin >> new_node->english_score;
         fox_score_vector[i] = new_node->fox_score;
         c_score_vector[i] = new_node->c_score;
@@ -60,12 +60,12 @@ void get_data(pointer_to_Student &header_student) //»ñÈ¡´ıÌí¼ÓµÄĞÅÏ¢
         new_node->next = p->next;
         p->next = new_node;
     }
-    cout << "È«²¿´¦ÀíÍê³É£¬Òª²»Òª´òÉÍ~" << endl;
+    cout << "å…¨éƒ¨å¤„ç†å®Œæˆï¼Œè¦ä¸è¦æ‰“èµ~" << endl;
     system("cls");
 
 }
 
-void print_total_score_descending() // ´òÓ¡×î¸ß³É¼¨
+void print_total_score_descending() // æ‰“å°æœ€é«˜æˆç»©
 {
     int max_total_score = *max_element(sum_score_vector.begin(), sum_score_vector.end());
     sort(sum_score_vector.begin(), sum_score_vector.end(), cmp);
@@ -74,12 +74,12 @@ void print_total_score_descending() // ´òÓ¡×î¸ß³É¼¨
     {
         if (i->second == max_total_score)
         {
-            cout << "³É¼¨×î¸ß»ñµÃÕßÊÇ:" << i->first << " ×î¸ß³É¼¨Îª:" << i->second << endl;
+            cout << "æˆç»©æœ€é«˜è·å¾—è€…æ˜¯:" << i->first << " æœ€é«˜æˆç»©ä¸º:" << i->second << endl;
         }
     }
 }
 
-void print_achievement_ranking() //´òÓ¡ÅÅĞĞ°ñ
+void print_achievement_ranking() //æ‰“å°æ’è¡Œæ¦œ
 {
     sort(sum_score_vector.begin(), sum_score_vector.end(), cmp);
     system("cls");
@@ -89,27 +89,27 @@ void print_achievement_ranking() //´òÓ¡ÅÅĞĞ°ñ
         {
             if (i->second == sum_score_vector[j])
             {
-                cout << "µÚ" << j + 1 << "ÃûÊÇ:" << i->first << " ³É¼¨Îª:" << i->second << endl;
+                cout << "ç¬¬" << j + 1 << "åæ˜¯:" << i->first << " æˆç»©ä¸º:" << i->second << endl;
             }
         }
     }
 }
 
-void search_by_user_id(pointer_to_Student header_student) //Í¨¹ıÑ§ºÅ²éÕÒ
+void search_by_user_id(pointer_to_Student header_student) //é€šè¿‡å­¦å·æŸ¥æ‰¾
 {
     header_student = header_student->next;
     int target_user_id = 0;
     search:
     system("cls");
-    cout << "ÇëÊäÈë´ø²éÑ¯Ñ§ºÅ:";
+    cout << "è¯·è¾“å…¥å¸¦æŸ¥è¯¢å­¦å·:";
     cin >> target_user_id;
     while (header_student)
     {
         if (header_student->user_id == target_user_id)
         {
-            cout << "ÕÒµ½À²~" << endl;
-            cout << "Ä¿±êĞÕÃû:" << header_student->user_name;
-            cout << "×Ü·Ö" << map_name_total_score[header_student->user_name] << endl;
+            cout << "æ‰¾åˆ°å•¦~" << endl;
+            cout << "ç›®æ ‡å§“å:" << header_student->user_name;
+            cout << "æ€»åˆ†" << map_name_total_score[header_student->user_name] << endl;
             break;
         } else
         {
@@ -118,9 +118,10 @@ void search_by_user_id(pointer_to_Student header_student) //Í¨¹ıÑ§ºÅ²éÕÒ
     }
     if (header_student == nullptr)
     {
-        cout << "Ã»ÕÒµ½Ñ½~ÔÙ¸øÄãÒ»´Î»ú»á" << endl;
+        cout << "æ²¡æ‰¾åˆ°å‘€~å†ç»™ä½ ä¸€æ¬¡æœºä¼š" << endl;
     }
     char continue_or_not;
+    cout << "æ˜¯å¦ç»§ç»­æŸ¥è¯¢:";
     cin >> continue_or_not;
     if (continue_or_not == 'y' || continue_or_not == 'Y')
     {
@@ -131,23 +132,24 @@ void search_by_user_id(pointer_to_Student header_student) //Í¨¹ıÑ§ºÅ²éÕÒ
     }
 }
 
-void delete_student(pointer_to_Student &header_student) //Í¨¹ıÑ§ºÅÉ¾³ıÑ§Éú
+void delete_student(pointer_to_Student &header_student) //é€šè¿‡å­¦å·åˆ é™¤å­¦ç”Ÿ
 {
     pointer_to_Student forward_node = header_student;
+    header_student = header_student->next;
     int to_delete_student_user_id = 0;
     system("cls");
-    cout << "ÇëÊäÈë´ıÉ¾³ıÑ§ÉúÑ§ºÅ(Êı¾İÎŞ¼Û£¬½÷É÷²Ù×÷~):" << endl;
+    cout << "è¯·è¾“å…¥å¾…åˆ é™¤å­¦ç”Ÿå­¦å·(æ•°æ®æ— ä»·ï¼Œè°¨æ…æ“ä½œ~):" << endl;
     cin >> to_delete_student_user_id;
     while (header_student)
     {
         if (header_student->user_id == to_delete_student_user_id)
         {
-            cout << "ÒÑ¾­É¾³ı~" << endl;
+            cout << "å·²ç»åˆ é™¤~" << endl;
             forward_node->next = header_student->next;
             break;
         } else
         {
-            forward_node = forward_node->next;
+            forward_node = header_student;
             header_student = header_student->next;
         }
     }
@@ -166,7 +168,7 @@ int main()
     {
         welcome();
 
-        cout << "ÇëÊäÈë:";
+        cout << "è¯·è¾“å…¥:";
         char to_do_what;
         cin >> to_do_what;
         system("cls");
@@ -188,9 +190,9 @@ int main()
                 search_by_user_id(pointer_Student);
                 system("cls");
                 break;
-            case '5':
-                delete_student(pointer_Student);
-                break;
+//            case '5':
+//                delete_student(pointer_Student);
+//                break;
             case '0':
                 return 0;
             default:

@@ -22,16 +22,16 @@ void welcome_to_parking_management()
 {
     cout << "\n";
     cout << "                     ***惟草木之零落兮，恐美人之迟暮*** " << endl;
-    cout << "                    ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁" << endl;
-    cout << "                    ▏                               |" << endl;
-    cout << "                    ▏        1.车辆入库              |" << endl;
-    cout << "                    ▏        2.打印现有车辆数         |" << endl;
-    cout << "                    ▏        3.打印停车场余位         |" << endl;
-    cout << "                    ▏        4.查找车辆入库时间       |" << endl;
-    cout << "                    ▏        5.车辆出库              |" << endl;
-    cout << "                    ▏        0.退出                 |" << endl;
-    cout << "                    ▏                               |" << endl;
-    cout << "                    ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔" << endl;
+    cout << "                    ---------------------------------" << endl;
+    cout << "                    |                               |" << endl;
+    cout << "                    |        1.车辆入库              |" << endl;
+    cout << "                    |        2.打印现有车辆数         |" << endl;
+    cout << "                    |        3.打印停车场余位         |" << endl;
+    cout << "                    |        4.查找车辆入库时间       |" << endl;
+    cout << "                    |        5.车辆出库              |" << endl;
+    cout << "                    |        0.退出                 |" << endl;
+    cout << "                    |                              |" << endl;
+    cout << "                    ----------------------------------" << endl;
 
 }
 

@@ -72,52 +72,90 @@ create_with_pre_and_middle_order(vector<int> pre_order, vector<int> middle_order
     return T;
 }
 
-void generate_pre_oeder()
+void generate_pre_oeder(int left_1, int right_1, int left_2, int right_2)
 {
+    int i, j = 0;
+    for (i = left_2; i <= right_2; i++)
+    {
+        int flag = 0;
+        for (j = left_1; j <= right_1; j++)
+        {
+            if (vector_sequence_order[i] == vector_middle_order[j])
+            {
+                vector_pre_drder.push_back(vector_middle_order[j]);
+                flag = 1;
+                break;
+            }
+        }
+        if (flag)
+        {
+            break;
+        }
+    }
+    if (j > left_1)
+    {
+        generate_pre_oeder(left_1, j - 1, 0, right_2);
 
+    }
+    if (j < right_1)
+    {
+        generate_pre_oeder(j + 1, right_1, 0, right_2);
+    }
 }
 
 void get_user_input()
 {
-    welcome();
-
-    cout << "Please input:";
-    char to_do_what;
-    cin >> to_do_what;
-    system("cls");
-    int length;
-    cout << "Please input the number of binarytree node:";
-    cin >> length;
-    switch (to_do_what)
+    while (true)
     {
-        case '1':
-            get_sequence_order(length);
-            get_middle_order(length);
-            break;
-        case '2':
-            get_middle_order(length);
-            get_postorder(length);
-            break;
-        case '3':
-            get_pre_order(length);
-            get_middle_order(length);
-            my_binary_tree = create_with_pre_and_middle_order(vector_pre_drder,
-                                                              vector_middle_order, 0,
-                                                              length - 1, 0, length - 1);
-            break;
-        case '4':
-            cout << "Boom~" << endl;
-            break;
-        case '0':
-            return;
-        default:
-            break;
+        welcome();
+        cout << "Please input:";
+        char to_do_what;
+        cin >> to_do_what;
+        int length;
+        cout << "Please input the number of binarytree node:";
+        cin >> length;
+        switch (to_do_what)
+        {
+            case '1':
+                get_sequence_order(length);
+                get_middle_order(length);
+                generate_pre_oeder(0, vector_middle_order.size() - 1, 0, vector_sequence_order.size() - 1);
+                my_binary_tree = create_with_pre_and_middle_order(vector_pre_drder,
+                                                                  vector_middle_order, 0,
+                                                                  length - 1, 0, length - 1);
+                cout << "The pre_order is:";
+                pre_order(my_binary_tree);
+                break;
+            case '2':
+                get_middle_order(length);
+                get_postorder(length);
+                break;
+            case '3':
+                get_pre_order(length);
+                get_middle_order(length);
+                my_binary_tree = create_with_pre_and_middle_order(vector_pre_drder,
+                                                                  vector_middle_order, 0,
+                                                                  length - 1, 0, length - 1);
+                cout << "The Post_order is:";
+                post_order(my_binary_tree);
+                break;
+            case '4':
+                cout << "Boom~" << endl;
+                break;
+            case '0':
+                return;
+            default:
+                break;
+        }
     }
 }
 
 int main()
 {
     get_user_input();
-    cout << "The Post order is:";
-    post_order(my_binary_tree);
 }
+
+//sequence order:1 2 3 4 5 6 7 8
+//middle order:4 2 7 5 8 1 3 6
+//post order:4 7 8 5 2 6 3 1
+//pre order:1 2 4 5 7 8 3 6

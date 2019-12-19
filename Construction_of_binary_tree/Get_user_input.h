@@ -29,7 +29,8 @@
 #ifndef LEARN_DATA_STRUCTURE_GET_USER_INPUT_H
 #define LEARN_DATA_STRUCTURE_GET_USER_INPUT_H
 
-#include"Construction_of_binary_tree.h"
+
+#include "Construction_of_binary_tree.h"
 #include <vector>
 
 using namespace std;
@@ -50,10 +51,10 @@ void get_postorder(int length);
 void get_sequence_order(int length)
 {
     int data;
-    cout << "Please input sequence:";
+    std::cout << "Please input sequence order:";
     for (int i = 0; i < length; i++)
     {
-        cin >> data;
+        std::cin >> data;
         vector_sequence_order.push_back(data);
     }
 }
@@ -61,10 +62,10 @@ void get_sequence_order(int length)
 void get_middle_order(int length)
 {
     int data;
-    cout << "Please input middle order:";
+    std::cout << "Please input middle order:";
     for (int i = 0; i < length; i++)
     {
-        cin >> data;
+        std::cin >> data;
         vector_middle_order.push_back(data);
     }
 }
@@ -72,10 +73,10 @@ void get_middle_order(int length)
 void get_pre_order(int length)
 {
     int data;
-    cout << "Please input pre drder:";
+    std::cout << "Please input pre drder:";
     for (int i = 0; i < length; i++)
     {
-        cin >> data;
+        std::cin >> data;
         vector_pre_drder.push_back(data);
     }
 }
@@ -83,10 +84,10 @@ void get_pre_order(int length)
 void get_postorder(int length)
 {
     int data;
-    cout << "Please input postorder:";
+    std::cout << "Please input postorder:";
     for (int i = 0; i < length; i++)
     {
-        cin >> data;
+        std::cin >> data;
         vector_postamble_order.push_back(data);
     }
 }

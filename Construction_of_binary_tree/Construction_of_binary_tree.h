@@ -30,7 +30,7 @@
 #define LEARN_DATA_STRUCTURE_CONSTRUCTION_OF_BINARY_TREE_H
 
 #include <iostream>
-#include<vector>
+#include <vector>
 
 using namespace std;
 typedef struct binary_tree_node
@@ -58,7 +58,7 @@ void welcome()
 
 pointer_to_binary_tree_node
 create_with_pre_and_middle_order(vector<int> pre_order, vector<int> middle_order, int pre_first,
-                                 int pre_last,
-                                 int in_first, int in_last)
+    int pre_last,
+    int in_first, int in_last);
 
 #endif //LEARN_DATA_STRUCTURE_CONSTRUCTION_OF_BINARY_TREE_H

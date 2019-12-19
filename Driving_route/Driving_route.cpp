@@ -36,56 +36,56 @@
 #include<queue>
 #include<algorithm>
 
-#define inf 0x3f3f3f3f
+#define inf 0x3f3f3f3f //无穷大量
 using namespace std;
 
 int N, M;
-int g[501][501];
-long long g1[501][501];  //大路和小路
-long long dis[501], dis1[501];
-bool vis[501];
+int road_matrix[100][100];
+long long trod_matrix[100][100];  //大路和小路
+long long road[100], trod[100];
+bool visited_or_not[100];
 
-void SPFA(int s)
+void Shortest_path(int s)
 {
     queue<int> Q;
-    dis[s] = 0;
-    dis1[s] = 0;
+    road[s] = 0;
+    trod[s] = 0;
     Q.push(s);
-    vis[s] = 1;
+    visited_or_not[s] = true;
     while (!Q.empty())
     {
         long long tep = Q.front();
         Q.pop();
-        vis[tep] = 0;
+        visited_or_not[tep] = false;
         for (int i = 1; i <= N; i++)
         {
-            if (dis[i] > dis[tep] + g[tep][i])  //大路+大路
+            if (road[i] > road[tep] + road_matrix[tep][i])  //大路+大路
             {
-                dis[i] = dis[tep] + g[tep][i];
-                if (vis[i] == 0)
+                road[i] = road[tep] + road_matrix[tep][i];
+                if (visited_or_not[i] == 0)
                 {
                     Q.push(i);
-                    vis[i] = 1;
+                    visited_or_not[i] = true;
                 }
             }
-            if (dis[i] > dis1[tep] + g[tep][i])  //小路+大路
+            if (road[i] > trod[tep] + road_matrix[tep][i])  //小路+大路
             {
-                dis[i] = dis1[tep] + g[tep][i];
-                if (vis[i] == 0)
+                road[i] = trod[tep] + road_matrix[tep][i];
+                if (visited_or_not[i] == 0)
                 {
                     Q.push(i);
-                    vis[i] = 1;
+                    visited_or_not[i] = true;
                 }
             }
-            if (g1[tep][i] != inf)  //可以走小路,由于之前已经把小路进行了归并，所以只考虑之前走的是大路
+            if (trod_matrix[tep][i] != inf)  //可以走小路,由于之前已经把小路进行了归并，所以只考虑之前走的是大路
             {
-                if (dis1[i] > dis[tep] + g1[tep][i] * g1[tep][i])
+                if (trod[i] > road[tep] + trod_matrix[tep][i] * trod_matrix[tep][i])
                 {
-                    dis1[i] = dis[tep] + g1[tep][i] * g1[tep][i];
-                    if (vis[i] == 0)
+                    trod[i] = road[tep] + trod_matrix[tep][i] * trod_matrix[tep][i];
+                    if (visited_or_not[i] == 0)
                     {
                         Q.push(i);
-                        vis[i] = 1;
+                        visited_or_not[i] = true;
                     }
                 }
             }
@@ -97,18 +97,18 @@ int main()
 {
     int t, a, b, c;
     scanf("%d %d", &N, &M);
-    memset(vis, 0, sizeof(vis));
-    memset(dis, inf, sizeof(dis));
-    memset(dis1, inf, sizeof(dis1));
-    memset(g, inf, sizeof(g));
-    memset(g1, inf, sizeof(g1));
+    memset(visited_or_not, 0, sizeof(visited_or_not)); //初始化数组
+    memset(road, inf, sizeof(road));
+    memset(trod, inf, sizeof(trod));
+    memset(road_matrix, inf, sizeof(road_matrix));
+    memset(trod_matrix, inf, sizeof(trod_matrix));
     while (M--)
     {
         scanf("%d %d %d %d", &t, &a, &b, &c);
-        if (t == 1 && c < g1[a][b])
-            g1[a][b] = g1[b][a] = c;
-        else if (t == 0 && c < g[a][b])
-            g[a][b] = g[b][a] = c;
+        if (t == 1 && c < trod_matrix[a][b])
+            trod_matrix[a][b] = trod_matrix[b][a] = c;
+        else if (t == 0 && c < road_matrix[a][b])
+            road_matrix[a][b] = road_matrix[b][a] = c;
     }
     for (int i = 1; i <= N; i++) //这里用floyd事先计算好只走小路时两两点之间的最短距离
         for (int j = i + 1; j <= N; j++)
@@ -116,12 +116,28 @@ int main()
             for (int k = 1; k <= N; k++)
             {
                 if (k == i || k == j)
+                {
                     continue;
-                if (g1[i][j] > g1[i][k] + g1[k][j])
-                    g1[i][j] = g1[j][i] = g1[i][k] + g1[k][j];
+                }
+                if (trod_matrix[i][j] > trod_matrix[i][k] + trod_matrix[k][j])
+                {
+                    trod_matrix[i][j] = trod_matrix[j][i] = trod_matrix[i][k] + trod_matrix[k][j];
+                }
             }
         }
-    SPFA(1);
-    printf("%lld\n", min(dis[N], dis1[N]));
+    Shortest_path(1);
+    printf("%lld\n", min(road[N], trod[N]));
     return 0;
 }
+
+//样例输入
+//6 7
+//1 1 2 3
+//1 2 3 2
+//0 1 3 30
+//0 3 4 20
+//0 4 5 30
+//1 3 5 6
+//1 5 6 1
+//样例输出
+//76

@@ -44,7 +44,7 @@ void welcome()
     cout << "                    ▏        2.打印最高分            |" << endl;
     cout << "                    ▏        3.打印排行榜            |" << endl;
     cout << "                    ▏        4.查找                 |" << endl;//变成课任意插入位置的
-    cout << "                    ▏        5.删除                 |" << endl;
+//    cout << "                    ▏        5.删除                 |" << endl;
     cout << "                    ▏        0.退出                 |" << endl;
     cout << "                    ▏                               |" << endl;
     cout << "                    ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔" << endl;

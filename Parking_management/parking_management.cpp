@@ -18,11 +18,11 @@
 ======`-.____`-.___\_____/___.-`____.-'======
                    `=---='
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            ∑◊Ê±£””       ”¿ŒﬁBUG
+            ‰ΩõÁ•ñ‰øù‰Ωë       Ê∞∏Êó†BUG
 
             @Author: Tao
             @Time: 2019/12/10 9:51
-            @Project_NAME£∫Learn_Data_Structure
+            @Project_NAMEÔºöLearn_Data_Structure
             @FileName: parking_management.cpp
             @IDE: CLion
 */
@@ -35,14 +35,14 @@ void enter_parking_lot()
     int number_plate;
     enter_park:
     system("cls");
-    cout << "«Î ‰»Î≥µ≈∆∫≈:" << endl;
+    cout << "ËØ∑ËæìÂÖ•ËΩ¶ÁâåÂè∑:" << endl;
     cin >> number_plate;
     if (car_park.size() < 10)
     {
         car_park.push(number_plate);
         car_start_time[number_plate] = time((time_t *) nullptr);
-        cout << "»Îø‚≥…π¶!" << endl;
-        cout << " «∑ÒºÃ–¯≤ª“™Õ££ø" << endl;
+        cout << "ÂÖ•Â∫ìÊàêÂäü!" << endl;
+        cout << "ÊòØÂê¶ÁªßÁª≠‰∏çË¶ÅÂÅúÔºü" << endl;
         if (judge_to_do_what())
         {
             goto enter_park;
@@ -53,8 +53,8 @@ void enter_parking_lot()
 
     } else
     {
-        cout << "≥µø‚“—¬˙~" << endl;
-        cout << " «∑ÒΩ¯»Îµ»¥˝?" << endl;
+        cout << "ËΩ¶Â∫ìÂ∑≤Êª°~" << endl;
+        cout << "ÊòØÂê¶ËøõÂÖ•Á≠âÂæÖ?" << endl;
         if (judge_to_do_what())
         {
             wait_to_park.push(number_plate);
@@ -65,32 +65,32 @@ void enter_parking_lot()
     }
 }
 
-void enter_queue(int number_plate) //Ω¯»Î∂”¡–
+void enter_queue(int number_plate) //ËøõÂÖ•ÈòüÂàó
 {
     wait_to_park.push(number_plate);
-    cout << "Ω¯»Î≈≈∂”~" << endl;
+    cout << "ËøõÂÖ•ÊéíÈòü~" << endl;
 }
 
-void print_number_of_vehicles() //¥Ú”°œ÷”–≥µ¡æ ˝
+void print_number_of_vehicles() //ÊâìÂç∞Áé∞ÊúâËΩ¶ËæÜÊï∞
 {
-    cout << "œ÷”–≥µ¡æ:" << car_park.size() << "¡æ" << endl;
+    cout << "Áé∞ÊúâËΩ¶ËæÜ:" << car_park.size() << "ËæÜ" << endl;
 }
 
 void outbound()
 {
     int number_plate;
-    cout << "«Î ‰»Î≥ˆø‚≥µ≈∆∫≈:" << endl;
+    cout << "ËØ∑ËæìÂÖ•Âá∫Â∫ìËΩ¶ÁâåÂè∑:" << endl;
     cin >> number_plate;
     for (int i = car_park.size(); i > 0; i--)
     {
         if (car_park.top() == number_plate)
         {
-            cout << "Õ£≥µ ±º‰:" << time((time_t *) nullptr) - car_start_time[number_plate] << "S" << endl;
+            cout << "ÂÅúËΩ¶Êó∂Èó¥:" << time((time_t *) nullptr) - car_start_time[number_plate] << "S" << endl;
             car_park.pop();
             if (!wait_to_park.empty())
             {
                 car_park.push(wait_to_park.front());
-                cout << "∂”ŒÈ÷–:" << wait_to_park.front() << "“—»Îø‚" << endl;
+                cout << "Èòü‰ºç‰∏≠:" << wait_to_park.front() << "Â∑≤ÂÖ•Â∫ì" << endl;
                 wait_to_park.pop();
             }
             break;
@@ -101,10 +101,10 @@ void outbound()
         }
         if (i == 0)
         {
-            cout << "√ª’“µΩ£¨ƒ„ «≤ª «Œ™ƒ—Œ“~" << endl;
+            cout << "Ê≤°ÊâæÂà∞Ôºå‰Ω†ÊòØ‰∏çÊòØ‰∏∫ÈöæÊàë~" << endl;
         }
     }
-    for (int i = 0; i < make_way.size(); i++)
+    for (int j = 0; j <= make_way.size(); j++)
     {
         car_park.push(make_way.top());
         make_way.pop();
@@ -114,9 +114,9 @@ void outbound()
 void calculate_park_time()
 {
     int number_plate;
-    cout << "«Î ‰»Î≥µ≈∆∫≈:" << endl;
+    cout << "ËØ∑ËæìÂÖ•ËΩ¶ÁâåÂè∑:" << endl;
     cin >> number_plate;
-    cout << "Õ£≥µ ±º‰:" << time((time_t *) nullptr) - car_start_time[number_plate] << "S" << endl;
+    cout << "ÂÅúËΩ¶Êó∂Èó¥:" << time((time_t *) nullptr) - car_start_time[number_plate] << "S" << endl;
 
 }
 
@@ -125,7 +125,7 @@ int main()
     while (true)
     {
         welcome_to_parking_management();
-        cout << "«Î ‰»Î≤Ÿ◊˜–Ú∫≈:";
+        cout << "ËØ∑ËæìÂÖ•Êìç‰ΩúÂ∫èÂè∑:";
         char to_do_what;
         cin >> to_do_what;
         system("cls");
@@ -139,7 +139,7 @@ int main()
                 print_number_of_vehicles();
                 break;
             case '3':
-                cout << "œ÷”–ø’Œª:" << 10 - car_park.size() << "∏ˆ" << endl;
+                cout << "Áé∞ÊúâÁ©∫‰Ωç:" << 10 - car_park.size() << "‰∏™" << endl;
                 break;
             case '4':
                 calculate_park_time();
